@@ -57,10 +57,10 @@ print("CS Topper is",Cs_topper["Name"],"with",Cs_topper["CS"],"marks")
 Hindi_topper=df.loc[df["Hindi"].idxmax()]
 print("Hindi Topper is",Hindi_topper["Name"],"with",Hindi_topper["Hindi"],"marks")
 
-# ---------------- Final DataFrame ----------------
+
 print("\n----------Final-List----------\n")
 print(df)
 
-# ---------------- Save to Excel ----------------
+
 df.to_excel(r"C:\Users\DELL\Downloads\final_results2.xlsx", index=False)
 
