@@ -57,11 +57,68 @@ Cs_topper=df.loc[df["CS"].idxmax()]
 print("CS Topper is",Cs_topper["Name"],"with",Cs_topper["CS"],"marks")
 Hindi_topper=df.loc[df["Hindi"].idxmax()]
 print("Hindi Topper is",Hindi_topper["Name"],"with",Hindi_topper["Hindi"],"marks")
+subjects = ["Math", "Science", "CS", "English", "Hindi"]
+topper_marks = [df[subjects].max() for sub in subjects]
+
 
 # ---------------- Final DataFrame ----------------
 print(emoji.emojize("\n----------Final-List:memo::clipboard:----------\n"))
 print(df)
 
 # ---------------- Save to Excel ----------------
- df.to_excel(r"C:\Users\DELL\Downloads\final_results2.xlsx", index=False)
+# df.to_excel(r"C:\Users\DELL\Downloads\final_results2.xlsx", index=False)
 
+co = [
+    "#1f77b4",  # Blue
+    "#ff7f0e",  # Orange
+    "#2ca02c",  # Green
+    "#d62728",  # Red
+    "#9467bd",  # Purple
+    "#8c564b",  # Brown
+    "#e377c2",  # Pink
+    "#7f7f7f",  # Gray
+    "#bcbd22",  # Olive
+    "#17becf"   # Cyan
+]
+plt.bar(df["Name"], df["Percentage"], color="#17becf")
+plt.xticks(rotation=90)
+plt.title("Student Percentages")
+plt.ylabel("Percentage")
+plt.ylim(0, 100)
+plt.show()
+
+
+plt.bar(df["Name"],df["Total"], color="#1f77b4")
+plt.xticks(rotation=90)
+plt.title("Student Total Marks")
+plt.ylabel("Total Marks")
+plt.ylim(0, 500)
+plt.show()
+
+stu_grade=df["Grade"].value_counts()
+plt.pie(stu_grade,labels=stu_grade.index,autopct="%1.1f%%")
+plt.title("Grade Distribution of Students")
+plt.show()
+
+
+avg=[df["Math"].mean(),df["CS"].mean(),df["Hindi"].mean(),df["English"].mean(),df["Science"].mean()]
+sub=["Math","CS","Hindi","English","Science"]
+labels = [f"{sub[i]} ({avg[i]:.1f})" for i in range(len(sub))]
+plt.pie(avg,labels=labels)
+plt.title("Average of All Subjects")
+plt.show()
+
+avg=[df["Math"].max(),df["CS"].max(),df["Hindi"].max(),df["English"].max(),df["Science"].max()]
+sub=["Math","CS","Hindi","English","Science"]
+labels = [f"{sub[i]} ({avg[i]:.1f})" for i in range(len(sub))]
+plt.pie(avg,labels=labels)
+plt.title("Highest of All Subjects")
+plt.show()
+
+
+avg=[df["Math"].min(),df["CS"].min(),df["Hindi"].min(),df["English"].min(),df["Science"].min()]
+sub=["Math","CS","Hindi","English","Science"]
+labels = [f"{sub[i]} ({avg[i]:.1f})" for i in range(len(sub))]
+plt.pie(avg,labels=labels)
+plt.title("Lowest of All Subjects")
+plt.show()
