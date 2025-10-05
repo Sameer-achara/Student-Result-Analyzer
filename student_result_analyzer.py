@@ -1,18 +1,20 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import emoji
 df = pd.read_csv("C:\\Users\\DELL\\Downloads\\marks.csv")
-print("---------Mean Of The All Subjects---------\n")
+print(emoji.emojize("---------Mean Of The All Subjects:bar_chart:---------\n"))
 print("Average Marks in Maths:", df["Math"].mean())
 print("Average Marks in Science:", df["Science"].mean())
 print("Average Marks in CS:", df["CS"].mean())
 print("Average Marks in English:", df["English"].mean())
 print("Average Marks in Hindi:", df["Hindi"].mean())
-print("\n---------Highest Of The All Subjects---------\n")
+print(emoji.emojize("\n---------Highest Of The All Subjects:trophy::fire:---------\n"))
 print("Highest Marks in Maths:", df["Math"].max())
 print("Highest Marks in Science:", df["Science"].max())
 print("Highest Marks in CS:", df["CS"].max())
 print("Highest Marks in English:", df["English"].max())
 print("Highest Marks in Hindi:", df["Hindi"].max())
-print("\n---------Lowest Of The All Subjects---------\n")
+print(emoji.emojize("\n---------Lowest Of The All Subjects:warning::stop_sign:---------\n"))
 print("Lowest Marks in Maths:", df["Math"].min())
 print("Lowest Marks in Science:", df["Science"].min())
 print("Lowest Marks in CS:", df["CS"].min())
@@ -26,11 +28,10 @@ def check_fail_pass(Percentage):
     else:
         return "Fail"
 df["Result"]=df["Percentage"].apply(check_fail_pass)
-
 topper = df.loc[df["Percentage"].idxmax()]
 last_rank = df.loc[df["Percentage"].idxmin()]
 
-print("\n---------Ranking---------\n")
+print(emoji.emojize("\n---------Ranking:first_place_medal---------\n"))
 print("Class Topper is", topper["Name"], "with", topper["Percentage"],"%")
 print("Last Rank is", last_rank["Name"], "with", last_rank["Percentage"],"%")
 
@@ -44,7 +45,7 @@ def grade(Percentage):
    else:
     return "D"
    
-print("\n------------Subject-Wise Toppers----------\n")   
+print(emoji.emojize("\n------------Subject-Wise Toppers:books::crown:----------\n"))   
 df["Grade"]=df["Percentage"].apply(grade)
 math_topper=df.loc[df["Math"].idxmax()]
 print("Math Topper is",math_topper["Name"],"with",math_topper["Math"],"marks")
@@ -57,10 +58,10 @@ print("CS Topper is",Cs_topper["Name"],"with",Cs_topper["CS"],"marks")
 Hindi_topper=df.loc[df["Hindi"].idxmax()]
 print("Hindi Topper is",Hindi_topper["Name"],"with",Hindi_topper["Hindi"],"marks")
 
-
-print("\n----------Final-List----------\n")
+# ---------------- Final DataFrame ----------------
+print(emoji.emojize("\n----------Final-List:memo::clipboard:----------\n"))
 print(df)
 
-
-df.to_excel(r"C:\Users\DELL\Downloads\final_results2.xlsx", index=False)
+# ---------------- Save to Excel ----------------
+ df.to_excel(r"C:\Users\DELL\Downloads\final_results2.xlsx", index=False)
 
